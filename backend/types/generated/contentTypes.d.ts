@@ -746,6 +746,42 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
   };
 }
 
+export interface ApiPageContentPageContent extends Schema.CollectionType {
+  collectionName: 'page_contents';
+  info: {
+    singularName: 'page-content';
+    pluralName: 'page-contents';
+    displayName: 'page_content';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    head: Attribute.String & Attribute.DefaultTo<'Why choose us'>;
+    title: Attribute.String &
+      Attribute.DefaultTo<'We Are different from others'>;
+    description: Attribute.Text &
+      Attribute.DefaultTo<'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis           nulla, doloribus rerum consectetur officiis quisquam qui est?           Pariatur, delectus quibusdam. Lorem ipsum, dolor sit amet consectetur           adipisicing elit. Consectetur illum, numquam unde nisi expedita           facilis tempore commodi minima.'>;
+    reason_data: Attribute.Component<'reason.reason-content', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::page-content.page-content',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::page-content.page-content',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRevenueRevenue extends Schema.CollectionType {
   collectionName: 'revenues';
   info: {
@@ -796,6 +832,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::customer.customer': ApiCustomerCustomer;
       'api::invoice.invoice': ApiInvoiceInvoice;
+      'api::page-content.page-content': ApiPageContentPageContent;
       'api::revenue.revenue': ApiRevenueRevenue;
     }
   }

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_contents",
+  "info": {
+    "singularName": "page-content",
+    "pluralName": "page-contents",
+    "displayName": "page_content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "head": {
+      "type": "string",
+      "default": "Why choose us"
+    },
+    "title": {
+      "type": "string",
+      "default": "We Are different from others"
+    },
+    "description": {
+      "type": "text",
+      "default": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis           nulla, doloribus rerum consectetur officiis quisquam qui est?           Pariatur, delectus quibusdam. Lorem ipsum, dolor sit amet consectetur           adipisicing elit. Consectetur illum, numquam unde nisi expedita           facilis tempore commodi minima."
+    },
+    "reason_data": {
+      "displayName": "reason_content",
+      "type": "component",
+      "repeatable": true,
+      "component": "reason.reason-content",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_reason_reason_contents",
+  "info": {
+    "displayName": "reason_content",
+    "icon": "stack",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "reason_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "reason_title": {
+      "type": "string"
+    },
+    "reason_desc": {
+      "type": "string"
+    }
+  }
+}

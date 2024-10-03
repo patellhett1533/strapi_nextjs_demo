@@ -251,3 +251,33 @@ export async function fetchInvoiceById(id: string) {
     throw new Error("Failed to fetch all customers.");
   }
 }
+
+export async function fetchPageContent() {
+  const authToken = cookies().get("jwt")?.value;
+  if (!authToken) return redirect("/login");
+  const query = qs.stringify({
+    populate: {
+      image: {
+        fields: ["url"],
+      },
+    },
+  });
+  try {
+    const data = await fetch(
+      STRAPI_URL + "/api/page-contents?populate=reason_data&" + query,
+      {
+        headers: {
+          Authorization:
+            "Bearer " +
+            "c878214f40bbcd980144555c93eee6bf85a6d28687790f5afd57a8545309834413d2d4476ea91df32cdde9c3ed0e85d0db56cb495f1e7ddb7a01c6df9e63aa64c703f0d7ec2497007c6e61cbfb2483252fe58a59af94ec2d46f88ba24c94be93a59378578d246cbc6dbffa00d16d532dafa59822214dd7baf9e0c3e4d87cb66d",
+        },
+      }
+    );
+    const pages = await data.json();
+    const flatten = flattenAttributes(pages);
+    return flatten;
+  } catch (err) {
+    console.error("Database Error:", err);
+    throw new Error("Failed to fetch all customers.");
+  }
+}
