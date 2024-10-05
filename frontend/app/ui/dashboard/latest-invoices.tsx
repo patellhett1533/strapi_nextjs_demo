@@ -1,8 +1,8 @@
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import { fetchLatestInvoices } from '@/app/lib/data';
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import clsx from "clsx";
+import Image from "next/image";
+import { lusitana } from "@/app/ui/fonts";
+import { fetchLatestInvoices } from "@/app/lib/data";
 
 export default async function LatestInvoices() {
   const latestInvoices = await fetchLatestInvoices();
@@ -14,15 +14,15 @@ export default async function LatestInvoices() {
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
-          {latestInvoices.map((invoice, i) => {
+          {latestInvoices.map((invoice: any, i: number) => {
             return (
               <div
                 key={invoice.id}
                 className={clsx(
-                  'flex flex-row items-center justify-between py-4',
+                  "flex flex-row items-center justify-between py-4",
                   {
-                    'border-t': i !== 0,
-                  },
+                    "border-t": i !== 0,
+                  }
                 )}
               >
                 <div className="flex items-center">
@@ -31,6 +31,7 @@ export default async function LatestInvoices() {
                     className="mr-4 rounded-full"
                     width={32}
                     height={32}
+                    alt={`${invoice.customer.name}'s profile picture`}
                   />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
