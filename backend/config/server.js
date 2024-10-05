@@ -3,8 +3,10 @@ module.exports = ({ env }) => ({
   port: env.int("PORT", 1337),
   url: "https://strapi-nextjs-demo.onrender.com",
   admin: {
-    url: "/",
-    serverAdminPanel: false,
+    url: env(
+      "ADMIN_BACKEND_URL",
+      "https://strapi-nextjs-demo.onrender.com/admin"
+    ),
   },
   app: {
     keys: env.array("APP_KEYS"),
