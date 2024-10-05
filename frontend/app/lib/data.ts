@@ -263,16 +263,13 @@ export async function fetchPageContent() {
     },
   });
   try {
-    const data = await fetch(
-      STRAPI_URL + "/api/page-contents?populate=reason_data&" + query,
-      {
-        headers: {
-          Authorization:
-            "Bearer " +
-            "c878214f40bbcd980144555c93eee6bf85a6d28687790f5afd57a8545309834413d2d4476ea91df32cdde9c3ed0e85d0db56cb495f1e7ddb7a01c6df9e63aa64c703f0d7ec2497007c6e61cbfb2483252fe58a59af94ec2d46f88ba24c94be93a59378578d246cbc6dbffa00d16d532dafa59822214dd7baf9e0c3e4d87cb66d",
-        },
-      }
-    );
+    const data = await fetch(STRAPI_URL + "/api/page-contents?" + query, {
+      headers: {
+        Authorization:
+          "Bearer " +
+          "9fb9d2731e50001356597f467b54d23c5d1737a26f0c12c1cec6f49359cfaaa3ec7fe4ae1f2a9b933db72de85fec03e4be0a5178f38c257563a54873ae383971ff8aa1d3cbca1321adb3b063c8507f2b91482167e5c7272d83c90873f1e12be4c333658d00e9aa560bc885fb137a4553707f66c0b8ea53cd18afdfbf4104d172",
+      },
+    });
     const pages = await data.json();
     const flatten = flattenAttributes(pages);
     return flatten;
